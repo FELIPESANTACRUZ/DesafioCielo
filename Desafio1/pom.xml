@@ -72,7 +72,12 @@
 			<artifactId>auth</artifactId>
 			<version>2.20.151</version>
 		</dependency>
-	</dependencies>
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-jpa</artifactId>
+            <version>3.1.3</version>
+        </dependency>
+    </dependencies>
 
 	<build>
 		<plugins>

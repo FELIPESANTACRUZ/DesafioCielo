@@ -20,21 +20,21 @@ public class ClienteController {
         clienteService.cadastrarCliente(cliente);
     }
 
-    /*@PutMapping("/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<Void> atualizarCliente(@PathVariable int id, @RequestBody Cliente cliente) {
         if (clienteService.atualizarCliente(id, cliente)) {
             return ResponseEntity.ok().build();
         }
         return ResponseEntity.notFound().build();
-    }*/
+    }
 
-    /*@GetMapping("/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<Cliente> consultarCliente(@PathVariable int id) {
         Cliente cliente = clienteService.consultarCliente(id);
         if (cliente != null) {
             return ResponseEntity.ok(cliente);
         }
         return ResponseEntity.notFound().build();
-    }*/
+    }
 }
 

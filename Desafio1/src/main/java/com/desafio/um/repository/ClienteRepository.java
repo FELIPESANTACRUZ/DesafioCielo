@@ -1,9 +1,14 @@
 package com.desafio.um.repository;
 
+import com.desafio.um.model.Cliente;
+import org.springframework.stereotype.Repository;
+
+import java.util.Optional;
+
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class ClienteRepository {
-
-    // Implemente métodos para acessar os dados dos clientes aqui
+public interface ClienteRepository extends JpaRepository<Cliente, Integer> {
+    // ...
 }
