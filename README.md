@@ -1,21 +1,18 @@
 # DesafioAdaTech
-Desafio da Ada Tech Java Spring Boot Aws
+Desafio da Cielo organizado pela Ada Tech
 
-<h2>DesafioAdaTech</h2>
+<h2>Desafio Cielo</h2>
 <h3><a href= "https://ada.tech/">Ada Tech</a></h3>
 
-# Projeto: Gerenciador de Feedbacks de Clientes
+# Projeto: 
 
 # Autores
 
 * Felipe Santa Cruz Simão
-* Robert Martins
-* Ana Paula Rodrigues
-* Thiago Monteiro
+
 
 # Descrição
 
-* Gerenciador de Feedbacks de Clientes , este projeto é um serviço Java baseado em Spring Boot que gerencia feedbacks de clientes, como sugestões, elogios e críticas. Ele aproveita os serviços da AWS, como SNS (Simple Notification Service) e SQS (Simple Queue Service), para enfileirar e processar os feedbacks de acordo com a ordem em que foram recebidos.
 
 # Documentação
 
