@@ -23,5 +23,5 @@ Versões:
 
 # Releases
 
-Deverá ser publicado um release ao término de cada entrega do projeto.
+1.0
 
