@@ -1,7 +1,7 @@
 # DesafioAdaTech
-Desafio da Ada Tech Java Spring Boot Aws
+Desafio da Cielo organizado pela Ada Tech
 
-<h2>DesafioAdaTech</h2>
+<h2>Desafio Cielo</h2>
 <h3><a href= "https://ada.tech/">Ada Tech</a></h3>
 
 # Projeto: 
