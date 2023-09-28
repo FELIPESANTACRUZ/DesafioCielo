@@ -41,6 +41,7 @@ public class ClienteController {
 
 
     @GetMapping("/{id}")
+    @CrossOrigin(origins = "http://localhost:3000")
     public ResponseEntity<ResponseEntity<?>> consultarCliente(@PathVariable int id) {
         ResponseEntity<?> cliente = clienteService.consultarCliente(id);
         if (cliente != null) {
