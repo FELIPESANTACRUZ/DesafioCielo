@@ -1,12 +1,21 @@
 package com.desafio.um.model;
 
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+
+@Entity
 public class Cliente {
+
+
     private String cnpj;
     private String razaoSocial;
     private String mcc;
     private String cpfContato;
     private String nomeContato;
     private String emailContato;
+    @Id
+    private Long id;
 
     public String getCnpj() {
         return cnpj;
@@ -56,4 +65,11 @@ public class Cliente {
         this.emailContato = emailContato;
     }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Long getId() {
+        return id;
+    }
 }
