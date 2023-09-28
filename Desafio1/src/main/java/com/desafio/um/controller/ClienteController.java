@@ -32,6 +32,9 @@ public class ClienteController {
             return ResponseEntity.status(HttpStatus.CONFLICT).body("Cliente já cadastrado");
         }
         clienteRepository.save(cliente);
+
+        filaAtendimento.adicionarCliente(cliente);
+        
         return ResponseEntity.status(HttpStatus.CREATED).body("Cliente cadastrado com sucesso");
     }
 
@@ -71,10 +74,7 @@ public class ClienteController {
     @RequestMapping("/fila-atendimento")
     public class FilaAtendimentoController {
 
-
-
-
-        @GetMapping("/proximo")
+        @GetMapping("/fila-atendimento/proximo")
         public ResponseEntity<?> proximoClienteAtendimento() {
             Cliente cliente = filaAtendimento.retirarProximoCliente();
 
@@ -84,8 +84,9 @@ public class ClienteController {
                 return ResponseEntity.status(HttpStatus.NOT_FOUND).body("A fila de atendimento está vazia");
             }
         }
-    }
 
+
+    }
 
 }
 
