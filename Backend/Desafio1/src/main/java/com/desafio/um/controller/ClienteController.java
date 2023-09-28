@@ -34,7 +34,7 @@ public class ClienteController {
         clienteRepository.save(cliente);
 
         filaAtendimento.adicionarCliente(cliente);
-        
+
         return ResponseEntity.status(HttpStatus.CREATED).body("Cliente cadastrado com sucesso");
     }
 
