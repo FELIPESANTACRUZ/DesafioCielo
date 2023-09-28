@@ -3,8 +3,8 @@ import { listarClientes } from '../Service/ClienteService';
 
 function ListarCliente() {
   const [clientesPorId, setClientesPorId] = useState([]);
-  const inicioId = 0; // ID inicial
-  const fimId = 10; // ID final (ajuste conforme necessário)
+  const inicioId = 0;
+  const fimId = 5; 
 
   useEffect(() => {
     const buscarClientesPorId = async () => {
@@ -14,6 +14,7 @@ function ListarCliente() {
         try {
           const cliente = await listarClientes(id);
           clientes.push(cliente);
+          console.info(`trouxe cliente ${id}:`);
         } catch (error) {
           console.error(`Erro ao buscar cliente com ID ${id}:`, error);
         }
@@ -27,11 +28,18 @@ function ListarCliente() {
 
   return (
     <div>
+      
       <h2>Lista de Clientes por ID</h2>
       <ul>
         {clientesPorId.map((cliente) => (
-          <li key={cliente.id}>
-            {cliente.id}: {cliente.nome}
+          <li key={cliente.body.id}>
+            <strong>ID:</strong> {cliente.body.id}<br />
+            <strong>CNPJ:</strong> {cliente.body.cnpj}<br />
+            <strong>Razão Social:</strong> {cliente.body.razaoSocial}<br />
+            <strong>MCC:</strong> {cliente.body.mcc}<br />
+            <strong>CPF do Contato:</strong> {cliente.body.cpfContato}<br />
+            <strong>Nome do Contato:</strong> {cliente.body.nomeContato}<br />
+            <strong>Email do Contato:</strong> {cliente.body.emailContato}<br />
           </li>
         ))}
       </ul>
