@@ -14,7 +14,7 @@ import java.util.Optional;
 @Service
 public class ClienteService {
 
-    //@Autowired
+    @Autowired
     private ClienteRepository clienteRepository;
 
     public boolean atualizarCliente(int id, Cliente novoCliente) {

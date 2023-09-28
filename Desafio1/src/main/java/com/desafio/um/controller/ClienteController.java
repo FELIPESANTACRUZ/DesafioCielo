@@ -14,7 +14,10 @@ public class ClienteController {
 
     @Autowired
     private ClienteService clienteService;
-    public ClienteRepository clienteRepository;
+
+    @Autowired
+    private ClienteRepository clienteRepository;
+
 
     @PostMapping
     public ResponseEntity<String> cadastrarCliente(Cliente cliente) {
