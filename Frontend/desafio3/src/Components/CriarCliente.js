@@ -4,7 +4,6 @@ import InputMask from 'react-input-mask';
 import validator from 'validator';
 import axios from 'axios';
 import { validate } from 'cnpj';
-import { v4 as uuidv4 } from 'uuid';
 
 
 function CriarCliente() {
@@ -28,12 +27,8 @@ function CriarCliente() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const id = uuidv4();
+ 
 
-    const updatedFormData = {
-      ...formData,
-      id: id,
-    };
 
 
     if (!validate(formData.cnpj)) {
@@ -51,7 +46,7 @@ function CriarCliente() {
       return;
     }
 
-     axios.post('http://localhost:9090/clientes', updatedFormData)
+     axios.post('http://localhost:9090/clientes', formData)
        .then((response) => {
          console.log('Cliente cadastrado com sucesso', response.data);
        })
