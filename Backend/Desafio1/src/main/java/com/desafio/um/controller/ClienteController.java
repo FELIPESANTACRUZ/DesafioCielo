@@ -9,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+
 import java.util.List;
 
 
@@ -27,18 +28,20 @@ public class ClienteController {
 
 
     @PostMapping
-    public ResponseEntity<String> cadastrarCliente(Cliente cliente) {
+    public ResponseEntity<String> cadastrarCliente(@RequestBody Cliente cliente) {
         Cliente clienteExistente = clienteRepository.findByCnpj(cliente.getCnpj());
 
         if (clienteExistente != null) {
             return ResponseEntity.status(HttpStatus.CONFLICT).body("Cliente já cadastrado");
         }
+
         clienteRepository.save(cliente);
 
         filaAtendimento.adicionarCliente(cliente);
 
         return ResponseEntity.status(HttpStatus.CREATED).body("Cliente cadastrado com sucesso");
     }
+
 
 
 
@@ -63,7 +66,7 @@ public class ClienteController {
         }
 
         return ResponseEntity.notFound().build();
-        
+
     }
 
 
