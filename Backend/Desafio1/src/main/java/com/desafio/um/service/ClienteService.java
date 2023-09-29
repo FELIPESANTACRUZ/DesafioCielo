@@ -48,6 +48,17 @@ public class ClienteService {
         }
     }
 
+    public ResponseEntity<?> consultarClientePorCnpj(String cnpj) {
+        Cliente cliente = clienteRepository.findByCnpj(cnpj);
+
+        if (cliente != null) {
+            return ResponseEntity.ok(cliente);
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Cliente não encontrado");
+        }
+    }
+
+
     public List<Cliente> listarClientes() {
         List<Cliente> clientes = clienteRepository.findAll();
 
@@ -66,14 +77,17 @@ public class ClienteService {
         return ResponseEntity.status(HttpStatus.CREATED).body("Cliente cadastrado com sucesso");
     }
 
-    public boolean excluirCliente(int id) {
-        Optional<Cliente> clienteExistente = clienteRepository.findById(id);
+    public boolean excluirCliente(String cnpj) {
+        Cliente clienteExistente = clienteRepository.findByCnpj(cnpj);
 
-        if (clienteExistente.isPresent()) {
-            clienteRepository.deleteById(id);
+        if (clienteExistente != null) {
+            clienteRepository.delete(clienteExistente);
             return true;
         }
 
         return false;
     }
+
+
+    
 }

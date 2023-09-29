@@ -45,10 +45,10 @@ public class ClienteController {
 
 
 
-    @GetMapping("/{id}")
+    @GetMapping("/{cnpj}")
     @CrossOrigin(origins = "http://localhost:3000")
-    public ResponseEntity<ResponseEntity<?>> consultarClientePorId(@PathVariable int id) {
-        ResponseEntity<?> cliente = clienteService.consultarCliente(id);
+    public ResponseEntity<?> consultarClientePorCnpj(@PathVariable String cnpj) {
+        ResponseEntity<?> cliente = clienteService.consultarClientePorCnpj(cnpj);
         if (cliente != null) {
             return ResponseEntity.ok(cliente);
         }
@@ -80,9 +80,9 @@ public class ClienteController {
     }
 
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<?> excluirCliente(@PathVariable int id) {
-        boolean clienteExcluido = clienteService.excluirCliente(id);
+    @DeleteMapping("/{cnpj}")
+    public ResponseEntity<?> excluirCliente(@PathVariable String cnpj) {
+        boolean clienteExcluido = clienteService.excluirCliente(cnpj);
 
         if (clienteExcluido) {
             return ResponseEntity.noContent().build();
