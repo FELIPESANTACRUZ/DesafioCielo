@@ -19,6 +19,9 @@ const Home = () =>{
           <li>
             <Link to="/excluir">Excluir Cliente</Link>
           </li>
+          <li>
+            <Link to="/FilaAtendimento">Fila de Atendimentoe</Link>
+          </li>
         </ul>
       </nav>
     </div>
