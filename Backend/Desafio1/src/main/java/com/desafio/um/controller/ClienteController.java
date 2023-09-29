@@ -9,6 +9,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 
 @RestController
 @RequestMapping("/clientes")
@@ -42,13 +44,28 @@ public class ClienteController {
 
     @GetMapping("/{id}")
     @CrossOrigin(origins = "http://localhost:3000")
-    public ResponseEntity<ResponseEntity<?>> consultarCliente(@PathVariable int id) {
+    public ResponseEntity<ResponseEntity<?>> consultarClientePorId(@PathVariable int id) {
         ResponseEntity<?> cliente = clienteService.consultarCliente(id);
         if (cliente != null) {
             return ResponseEntity.ok(cliente);
         }
         return ResponseEntity.notFound().build();
     }
+
+    @GetMapping
+    @CrossOrigin(origins = "http://localhost:3000")
+    public ResponseEntity<List<Cliente>> listarClientes() {
+        List<Cliente> clientes = clienteService.listarClientes();
+
+        if (clientes != null && !clientes.isEmpty()) {
+            return ResponseEntity.ok(clientes);
+
+        }
+
+        return ResponseEntity.notFound().build();
+        
+    }
+
 
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
