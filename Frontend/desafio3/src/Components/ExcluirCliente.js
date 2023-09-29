@@ -18,10 +18,10 @@ function ExcluirCliente() {
     carregarClientes();
   }, []);
 
-  const handleExcluirCliente = async (id) => {
+  const handleExcluirCliente = async (cnpj) => { // Alterado para receber o CNPJ
     try {
-      await axios.delete(`http://localhost:9090/clientes/${id}`);
-      setClientes(clientes.filter((cliente) => cliente.id !== id));
+      await axios.delete(`http://localhost:9090/clientes/${cnpj}`); // URL com o CNPJ
+      setClientes(clientes.filter((cliente) => cliente.cnpj !== cnpj)); // Filtrar pelo CNPJ
       console.log('Cliente excluído com sucesso');
     } catch (error) {
       console.error('Erro ao excluir cliente', error);
@@ -52,7 +52,7 @@ function ExcluirCliente() {
               <td>{cliente.razaoSocial}</td>
               <td>{cliente.mcc}</td>
               <td>
-                <button onClick={() => handleExcluirCliente(cliente.id)}>Excluir</button>
+                <button onClick={() => handleExcluirCliente(cliente.cnpj)}>Excluir</button> {/* Passa o CNPJ */}
               </td>
             </tr>
           ))}

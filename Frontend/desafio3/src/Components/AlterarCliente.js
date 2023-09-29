@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import axios from 'axios';
 
-function AlterarCliente({ match }) {
+function AlterarCliente() {
+  const { cnpj } = useParams();
   const [cliente, setCliente] = useState(null);
   const [formData, setFormData] = useState({
     cnpj: '',
@@ -15,10 +16,8 @@ function AlterarCliente({ match }) {
 
   useEffect(() => {
     const carregarCliente = async () => {
-      const id = match.params.id;
-
       try {
-        const response = await axios.get(`http://localhost:9090/clientes/${id}`);
+        const response = await axios.get(`http://localhost:9090/clientes/${cnpj}`);
         setCliente(response.data);
 
         setFormData({
@@ -30,20 +29,18 @@ function AlterarCliente({ match }) {
           emailContato: response.data.emailContato,
         });
       } catch (error) {
-        console.error(`Erro ao carregar cliente com ID ${id}`, error);
+        console.error(`Erro ao carregar cliente com CNPJ ${cnpj}`, error);
       }
     };
 
     carregarCliente();
-  }, [match.params.id]);
+  }, [cnpj]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
-    const id = match.params.id;
 
     try {
-      await axios.put(`http://localhost:9090/clientes/${id}`, formData);
+      await axios.put(`http://localhost:9090/clientes/${cnpj}`, formData);
       console.log('Cliente alterado com sucesso');
 
     } catch (error) {
