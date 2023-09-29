@@ -70,10 +70,10 @@ public class ClienteController {
     }
 
 
-    @PutMapping("/{id}")
+    @PutMapping("/{cnpj}")
     @ResponseStatus(HttpStatus.OK)
-    public ResponseEntity<Void> atualizarCliente(@PathVariable int id, @RequestBody Cliente cliente) {
-        if (clienteService.atualizarCliente(id, cliente)) {
+    public ResponseEntity<Void> atualizarCliente(@PathVariable String cnpj, @RequestBody Cliente cliente) {
+        if (clienteService.atualizarCliente(cnpj, cliente)) {
             return ResponseEntity.ok().build();
         }
         return ResponseEntity.notFound().build();

@@ -18,20 +18,18 @@ public class ClienteService {
     @Autowired
     private ClienteRepository clienteRepository;
 
-    public boolean atualizarCliente(int id, Cliente novoCliente) {
-        Optional<Cliente> clienteExistente = clienteRepository.findById(id);
+    public boolean atualizarCliente(String cnpj, Cliente novoCliente) {
+        Cliente clienteExistente = clienteRepository.findByCnpj(cnpj);
 
-        if (clienteExistente.isPresent()) {
-            Cliente cliente = clienteExistente.get();
+        if (clienteExistente != null) {
+            // Atualize os campos do clienteExistente com os valores do novoCliente
+            clienteExistente.setCnpj(novoCliente.getCnpj());
+            clienteExistente.setMcc(novoCliente.getMcc());
+            clienteExistente.setCpfContato(novoCliente.getCpfContato());
+            clienteExistente.setNomeContato(novoCliente.getNomeContato());
+            clienteExistente.setEmailContato(novoCliente.getEmailContato());
 
-            cliente.setCnpj(novoCliente.getCnpj());
-            cliente.setMcc(novoCliente.getMcc());
-            cliente.setCpfContato(novoCliente.getCpfContato());
-            cliente.setNomeContato(novoCliente.getNomeContato());
-            cliente.setEmailContato(novoCliente.getEmailContato());
-
-
-            clienteRepository.save(cliente);
+            clienteRepository.save(clienteExistente);
 
             return true;
         }
