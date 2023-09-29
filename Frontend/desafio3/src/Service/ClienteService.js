@@ -1,12 +1,11 @@
 import axios from 'axios';
 
 // Função para listar todos os pré-cadastros de clientes
-async function listarClientes(id) {
+ async function listarClientes() {
   try {
-    const response = await axios.get(`http://localhost:9090/clientes/${id}`);
+    const response = await axios.get('http://localhost:9090/clientes');
     return response.data;
   } catch (error) {
-    console.error(`Erro ao buscar cliente com ID ${id}:`, error);
     throw error;
   }
 }

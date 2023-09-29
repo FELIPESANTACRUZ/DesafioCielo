@@ -3,47 +3,38 @@ import { listarClientes } from '../Service/ClienteService';
 import { Link } from 'react-router-dom';
 
 function ListarCliente() {
-  const [clientesPorId, setClientesPorId] = useState([]);
-  const inicioId = 0;
-  const fimId = 5; 
+  const [clientes, setClientes] = useState([]);
 
   useEffect(() => {
-    const buscarClientesPorId = async () => {
-      const clientes = [];
-
-      for (let id = inicioId; id <= fimId; id++) {
-        try {
-          const cliente = await listarClientes(id);
-          clientes.push(cliente);
-          console.info(`trouxe cliente ${id}:`);
-        } catch (error) {
-          console.error(`Erro ao buscar cliente com ID ${id}:`, error);
-        }
+    const buscarClientes = async () => {
+      try {
+        const clientesData = await listarClientes();
+        setClientes(clientesData);
+      } catch (error) {
+        console.error('Erro ao buscar clientes:', error);
       }
-
-      setClientesPorId(clientes);
     };
 
-    buscarClientesPorId();
-  }, [inicioId, fimId]);
+    buscarClientes();
+  }, []);
 
   return (
     <div>
       <div>
-            <h1>Testeee ir para tela criar</h1>
-            <Link to="/">retornar a página inicial</Link>
-        </div>
-      <h2>Lista de Clientes por ID</h2>
+        <h1>Testeee ir para tela criar</h1>
+        <Link to="/">retornar a página inicial</Link>
+      </div>
+      <h2>Lista de Clientes</h2>
       <ul>
-        {clientesPorId.map((cliente) => (
-          <li key={cliente.body.id}>
-            <strong>ID:</strong> {cliente.body.id}<br />
-            <strong>CNPJ:</strong> {cliente.body.cnpj}<br />
-            <strong>Razão Social:</strong> {cliente.body.razaoSocial}<br />
-            <strong>MCC:</strong> {cliente.body.mcc}<br />
-            <strong>CPF do Contato:</strong> {cliente.body.cpfContato}<br />
-            <strong>Nome do Contato:</strong> {cliente.body.nomeContato}<br />
-            <strong>Email do Contato:</strong> {cliente.body.emailContato}<br />
+        {clientes.map((cliente) => (
+          <li key={cliente.id}>
+            <strong>ID:</strong> {cliente.id}<br />
+            <strong>CNPJ:</strong> {cliente.cnpj}<br />
+            <strong>Razão Social:</strong> {cliente.razaoSocial}<br />
+            <strong>MCC:</strong> {cliente.mcc}<br />
+            <strong>CPF do Contato:</strong> {cliente.cpfContato}<br />
+            <strong>Nome do Contato:</strong> {cliente.nomeContato}<br />
+            <strong>Email do Contato:</strong> {cliente.emailContato}<br />
           </li>
         ))}
       </ul>
