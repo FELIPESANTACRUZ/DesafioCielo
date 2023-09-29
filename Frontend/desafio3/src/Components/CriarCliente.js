@@ -35,8 +35,8 @@ function CriarCliente() {
       id: id,
     };
 
-    // Validações
-    if (!validate(formData.cnpj)) { // Usar a função de validação de CNPJ
+
+    if (!validate(formData.cnpj)) {
       alert('CNPJ inválido');
       return;
     }
@@ -51,8 +51,6 @@ function CriarCliente() {
       return;
     }
 
-    // Aqui você pode fazer a requisição POST para a API com os dados do cliente
-    // Exemplo de requisição fictícia usando Axios:
      axios.post('http://localhost:9090/clientes', updatedFormData)
        .then((response) => {
          console.log('Cliente cadastrado com sucesso', response.data);
