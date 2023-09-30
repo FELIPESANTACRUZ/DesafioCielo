@@ -19,24 +19,38 @@ function FilaAtendimento() {
   }, []);
 
   return (
-    <div>
-      <div>
-        <Link to="/">Retornar à página inicial</Link>
+    <div className="container mt-5">
+      <div className="mb-3">
+        <Link to="/" className="btn btn-primary">
+          Retornar à página inicial
+        </Link>
       </div>
-      <h2>Próximo Cliente na Fila de Atendimento</h2>
+      <h1 style={{ textAlign: 'center', color: 'blue', fontSize: '2rem', marginBottom: '20px' }}>
+            Próximo Cliente na Fila de Atendimento
+        </h1>
       {cliente ? (
-        <ul>
+        <ul className="list-unstyled">
           <li>
-            <strong>CNPJ:</strong> {cliente.cnpj}<br />
-            <strong>Razão Social:</strong> {cliente.razaoSocial}<br />
-            <strong>MCC:</strong> {cliente.mcc}<br />
-            <strong>CPF do Contato:</strong> {cliente.cpfContato}<br />
-            <strong>Nome do Contato:</strong> {cliente.nomeContato}<br />
-            <strong>Email do Contato:</strong> {cliente.emailContato}<br />
+            <strong>CNPJ:</strong> {cliente.cnpj}
+          </li>
+          <li>
+            <strong>Razão Social:</strong> {cliente.razaoSocial}
+          </li>
+          <li>
+            <strong>MCC:</strong> {cliente.mcc}
+          </li>
+          <li>
+            <strong>CPF do Contato:</strong> {cliente.cpfContato}
+          </li>
+          <li>
+            <strong>Nome do Contato:</strong> {cliente.nomeContato}
+          </li>
+          <li>
+            <strong>Email do Contato:</strong> {cliente.emailContato}
           </li>
         </ul>
       ) : (
-        <p>Não há clientes na fila de atendimento.</p>
+        <p className="alert alert-info">Não há clientes na fila de atendimento.</p>
       )}
     </div>
   );

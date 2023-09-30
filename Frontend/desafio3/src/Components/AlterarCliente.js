@@ -42,7 +42,6 @@ function AlterarCliente() {
     try {
       await axios.put(`http://localhost:9090/clientes/${cnpj}`, formData);
       console.log('Cliente alterado com sucesso');
-
     } catch (error) {
       console.error('Erro ao alterar cliente', error);
     }
@@ -57,68 +56,98 @@ function AlterarCliente() {
   };
 
   return (
-    <div>
+    <div className="container mt-5">
       <div>
-        <h1>TELA ALTERAR CLIENTE</h1>
-        <Link to="/">Retornar à página inicial</Link>
+      <h1 style={{ textAlign: 'center', color: 'blue', fontSize: '2rem', marginBottom: '20px' }}>
+            ALTERAR CLIENTE
+        </h1>
+        <div className="my-4">
+        <Link to="/" className="btn btn-primary">Retornar à página inicial</Link>
+      </div>
       </div>
       {cliente ? (
         <form onSubmit={handleSubmit}>
-          <label>
-            CNPJ:
+          <div className="mb-3">
+            <label htmlFor="cnpj" className="form-label">
+              CNPJ:
+            </label>
             <input
               type="text"
+              id="cnpj"
               name="cnpj"
               value={formData.cnpj}
               onChange={handleChange}
+              className="form-control"
             />
-          </label>
-          <label>
-            Razão Social:
+          </div>
+          <div className="mb-3">
+            <label htmlFor="razaoSocial" className="form-label">
+              Razão Social:
+            </label>
             <input
               type="text"
+              id="razaoSocial"
               name="razaoSocial"
               value={formData.razaoSocial}
               onChange={handleChange}
+              className="form-control"
             />
-          </label>
-          <label>
-            MCC:
+          </div>
+          <div className="mb-3">
+            <label htmlFor="mcc" className="form-label">
+              MCC:
+            </label>
             <input
               type="text"
+              id="mcc"
               name="mcc"
               value={formData.mcc}
               onChange={handleChange}
+              className="form-control"
             />
-          </label>
-          <label>
-            CPF do Contato:
+          </div>
+          <div className="mb-3">
+            <label htmlFor="cpfContato" className="form-label">
+              CPF do Contato:
+            </label>
             <input
               type="text"
+              id="cpfContato"
               name="cpfContato"
               value={formData.cpfContato}
               onChange={handleChange}
+              className="form-control"
             />
-          </label>
-          <label>
-            Nome do Contato:
+          </div>
+          <div className="mb-3">
+            <label htmlFor="nomeContato" className="form-label">
+              Nome do Contato:
+            </label>
             <input
               type="text"
+              id="nomeContato"
               name="nomeContato"
               value={formData.nomeContato}
               onChange={handleChange}
+              className="form-control"
             />
-          </label>
-          <label>
-            Email do Contato:
+          </div>
+          <div className="mb-3">
+            <label htmlFor="emailContato" className="form-label">
+              Email do Contato:
+            </label>
             <input
               type="text"
+              id="emailContato"
               name="emailContato"
               value={formData.emailContato}
               onChange={handleChange}
+              className="form-control"
             />
-          </label>
-          <button type="submit">Salvar Alterações</button>
+          </div>
+          <button type="submit" className="btn btn-primary">
+            Salvar Alterações
+          </button>
         </form>
       ) : (
         <p>Carregando...</p>

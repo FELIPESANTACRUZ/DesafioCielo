@@ -1,26 +1,45 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import LogoCielo from '../Assets/cielo.png'
 
-const Home = () =>{
+const Home = () => {
   return (
-    <div class="container">
-      <h1>Página Inicial</h1>
+    <div className="container mt-5">
+        <img
+          src={LogoCielo}
+          alt="Logotipo Cielo"
+          className="img-fluid img-thumbnail mb-4"
+          style={{ width: '200px' }} // Ajuste o tamanho aqui
+        />
+      <h1 className="display-4 text-center mb-5" style={{ color: 'blue', fontWeight: 'bold' }}>
+            Gestão de Clientes CIELO
+      </h1>
       <nav>
-        <ul>
-          <li>
-            <Link to="/criar">Criar Cliente</Link>
+        <ul className="list-unstyled">
+          <li className="mb-3">
+            <Link to="/criar" className="btn btn-primary">
+              Criar Cliente
+            </Link>
+          </li>
+          <li className="mb-3">
+            <Link to="/listar" className="btn btn-primary">
+              Listar Cliente
+            </Link>
+          </li>
+          <li className="mb-3">
+            <Link to="/alterar" className="btn btn-primary">
+              Alterar Cliente
+            </Link>
+          </li>
+          <li className="mb-3">
+            <Link to="/excluir" className="btn btn-primary">
+              Excluir Cliente
+            </Link>
           </li>
           <li>
-            <Link to="/listar">Listar Cliente</Link>
-          </li>
-          <li>
-            <Link to="/alterar">Alterar Cliente</Link>
-          </li>
-          <li>
-            <Link to="/excluir">Excluir Cliente</Link>
-          </li>
-          <li>
-            <Link to="/FilaAtendimento">Fila de Atendimentoe</Link>
+            <Link to="/FilaAtendimento" className="btn btn-primary">
+              Fila de Atendimento
+            </Link>
           </li>
         </ul>
       </nav>
